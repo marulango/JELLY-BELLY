@@ -1,0 +1,56 @@
+{% comment %}
+  This section is used in the cart template to render /cart page with an
+  overview of the items in customer's cart.
+
+  https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
+{% endcomment %}
+
+<section class="bg-white text-plum">
+  <div class="text-center max-full mx-auto md:max-w-7xl px-8 py-32">
+
+    <h2 class="display text-2xl md:text-5xl mb-16">{{ 'cart.title' | t }}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
+      <div class="col-1 md:col-start-2 md:col-span-2">
+        <form action="{{ routes.cart_url }}" method="post">
+          <table>
+            {% for item in cart.items %}
+              <tr>
+                <td class="w-1/2 pr-4 pb-8">
+                  <div class="media-container overflow-hidden aspect-square">
+                    {% render 'image', image: item.image, url: item.url %}
+                  </div>
+                </td>
+                <td class="w-1/2 pl-4 pb-8">
+                  <div class="flex flex-col gap-4 text-left">
+                    <p class="font-bold text-lg">{{ item.product.title }} <br> <span class="font-normal">{{ cart.total_price | money }}</span></p>
+                    <div class="flex items-center rounded-full border-2 border-plum w-fit">
+                      <input
+                        type="text"
+                        name="updates[]"
+                        value="{{ item.quantity }}"
+                        class="w-16 text-center bg-transparent py-1 text-plum outline-none border-none"
+                      >
+                      <a href="{{ item.url_to_remove }}" class="w-9 h-9 flex items-center justify-center rounded-full text-plum hover:bg-plum hover:text-white transition-colors" aria-label="{{ 'cart.remove' | t }}">
+                        <i class="ph-bold ph-trash"></i>
+                      </a>
+                    </div>
+
+                    <input type="submit" value="{{ 'cart.update' | t }}" class="btn-tertiary w-fit">
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </table>
+          <input type="submit" name="checkout" class="btn-secondary mt-8" value="{{ 'cart.checkout' | t }}">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:general.cart",
+  "settings": []
+}
+{% endschema %}

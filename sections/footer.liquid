@@ -1,0 +1,127 @@
+<div class="waves-divider -mt-10">
+  {% render 'divider-transparent-brand.liquid' %}
+</div>
+
+<footer class=" w-full bg-brand text-white text-sm">
+  <div class="px-8 md:px-16 pt-32 grid md:grid-cols-12 gap-8">
+    <div class=" md:col-span-3 col-1">
+      <div class="flex">
+        
+      </div>
+      <div class="mb-8">
+        <p><span class="eyebrow">&copy; {{ 'now' | date: '%Y' }} {{ 'J311YB34NZ' | link_to: routes.root_url }}</span>
+          <br><span>{{ powered_by_link }}</span> <br>
+        </p>
+      </div>
+      <div class="mb-16">
+        <p class="eyebrow mb-4">Social Media</p>
+        <ul class="list-none">
+          {% assign icon_map = "Instagram:instagram-logo,YouTube:youtube-logo,Twitch:twitch-logo,Threads:threads-logo,Patreon:patreon-logo,Email:envelope-simple" %}
+          {% assign icon_pairs = icon_map | split: ',' %}
+
+          {% for link in linklists['social-media'].links %}
+            {% assign icon_name = '' %}
+            {% for pair in icon_pairs %}
+              {% assign kv = pair | split: ':' %}
+              {% if kv[0] == link.title %}
+                {% assign icon_name = kv[1] %}
+              {% endif %}
+            {% endfor %}
+
+          <a href="{{ link.url }}" aria-label="{{ link.title }}" target="_blank" rel="noopener">
+              {% if icon_name != '' %}
+                <i class="text-base ph ph-{{ icon_name }}"></i>
+              {% else %}
+                {{ link.title }}
+              {% endif %}
+          </a>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="">
+        <p class="eyebrow mb-2 block">Your Store & Currency</p>
+        <div class="flex">
+        {% if localization.available_countries.size > 1 %}
+        <localization-form>
+          {% form 'localization' %}
+            <div class="relative">
+              <select 
+                name="country_code" 
+                onchange="this.form.submit()"
+                class="appearance-none rounded-full border-2 border-plum bg-transparent pl-4 pr-10 py-2 text-plum cursor-pointer outline-none"
+              >
+                {% for country in localization.available_countries %}
+                  <option value="{{ country.iso_code }}"{% if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+                    {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+                  </option>
+                {% endfor %}
+              </select>
+              <i class="ph-bold ph-caret-down absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-dusty opacity-50 hover:opacity-100 "></i>
+            </div>
+          {% endform %}
+        </localization-form>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1 md:col-span-2 md:col-start-8">
+      <p class="eyebrow">Policies</p>
+      <ul class="list-none">
+        {% for link in linklists['footer'].links %}
+          <li class="mt-4">{{ link.title | link_to: link.url }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+    <div class="col-1 md:col-span-3">
+      <p class="eyebrow mb-2">{{ section.settings.title }}</p>
+      <form class="gap-2 justify-left">
+        <input
+          type="email"
+          placeholder="{{ section.settings.placeholder }}"
+          required
+          class="w-full mb-2 border-dusty text-base"
+        />
+        <button
+          type="submit"
+          class="btn-secondary w-full"
+        >
+          {{ section.settings.button_label }}
+        </button>
+      </form>
+      <p id="newsletter-message" class="mt-4 hidden"></p>
+    </div>
+  </div>
+  <div class="overflow-hidden">
+  <p class="leading-none whitespace-nowrap relative left-1/2 -translate-x-1/2 inline-block opacity-50">
+    <span class="font-headline text-jumbotron font-bold"> J311YB34NZ &copy; {{ 'now' | date: '%Y' }}</span>
+  </p>
+</div>
+</footer>
+
+{% schema %}
+{
+  "name": "t:general.footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:labels.menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "t:labels.show_payment_icons",
+      "default": true
+    },
+    { "type": "text", "id": "title", "label": "Title", "default": "Don't miss a drop" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "First to know. First to get it." },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "your@email.com" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "You're in! Welcome to the chaos 🎉" },
+    { "type": "text", "id": "error_message", "label": "Error message", "default": "Something went wrong, please try again." }
+  ],
+  "presets": [{ "name": "Footer" }]
+}
+{% endschema %}

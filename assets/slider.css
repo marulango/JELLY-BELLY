@@ -1,0 +1,112 @@
+.testimonials-swiper {
+  position: relative;
+  overflow: visible;
+}
+.testimonials-swiper::before,
+.testimonials-swiper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.testimonials-swiper .swiper-wrapper {
+  overflow: visible;
+}
+
+.testimonials-swiper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-plum), transparent);
+}
+
+.testimonials-swiper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-plum), transparent);
+}
+
+
+.testimonials-swiper .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 300px;
+}
+
+.testimonials-swiper .swiper-slide blockquote {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonials-swiper .swiper-slide blockquote cite {
+  margin-top: auto;
+}
+
+/* Pagination dots */
+.testimonials-swiper .swiper-pagination {
+  position: static;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+/* Navigation buttons */
+.testimonials-swiper .swiper-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding-bottom: 6px;
+}
+
+.testimonials-swiper .swiper-button-prev,
+.testimonials-swiper .swiper-button-next {
+  position: static;
+  margin-top: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--color-dusty);
+  color: var(--color-dusty);
+  background: var(--color-bg);
+  box-shadow: 2px 2px 0px 0px var(--color-dusty);
+  --tw-duration: 250ms;
+  transition-duration: 250ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  z-index: 3;
+}
+
+.testimonials-swiper .swiper-button-prev:hover,
+.testimonials-swiper .swiper-button-next:hover {
+ --tw-translate-x: 4px;
+ --tw-translate-y: 4px;
+ translate: var(--tw-translate-x) var(--tw-translate-y);
+ box-shadow: 0px 0px 0px 0px var(--btn-border);
+}
+
+.testimonials-swiper .swiper-button-prev::after,
+.testimonials-swiper .swiper-button-next::after {
+  font-size: 14px;
+  font-weight: bold;
+  display: none;
+}
+
+.testimonials-swiper .swiper-button-prev i,
+.testimonials-swiper .swiper-button-next i {
+  font-size: 1.25rem;
+  color: var(--color-dusty);
+}
+
+.testimonials-swiper .swiper-pagination-bullet {
+  background: var(--color-white);
+  opacity: 0.3;
+}
+
+.testimonials-swiper .swiper-pagination-bullet-active {
+  background: var(--color-brand);
+  opacity: 1;
+}

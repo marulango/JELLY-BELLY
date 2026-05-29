@@ -1,0 +1,275 @@
+@import url("https://use.typekit.net/jts8ode.css");
+@import "tailwindcss";
+@theme {
+    /* Colors */
+    --color-brand: #FF52AF;
+    --color-muted: #CC6A9E;
+    --color-dusty: #996E85;
+    --color-gray: #665A60;
+    --color-plum: #33232B;
+
+    /* Fonts */
+    --font-headline: "obviously-extended", sans-serif;
+    --font-title: "neulis-cursive", sans-serif;
+    --font-body: "neulis-sans", sans-serif;
+
+    --aspect-retro: 4 / 3;
+    --aspect-portrait: 9 / 16;
+    --swiper-navigation-sides-offset: 32;
+
+    --text-jumbotron: 8rem;
+}
+
+
+/** ---------- Customization ----- */
+
+/*  Typesetting  */
+:root {
+  --font-primary--family: "neulis-sans", sans-serif;
+}
+
+/* Typescale — 8px base rhythm */
+  
+  --text-display-lg:  3.5rem;   /* 56px — Obviously Extended */
+  --text-display:     3rem;     /* 48px — Obviously Extended */
+  --text-headline-lg: 2.5rem;   /* 40px — Obviously Extended */
+  --text-headline:    2rem;     /* 32px — Obviously Extended */
+  --text-headline-sm: 1.5rem;   /* 24px — Neulis Cursive */
+  --text-title-lg:    1.25rem;  /* 20px — Neulis Cursive */
+  --text-title:       1rem;     /* 16px — Neulis Cursive */
+  --text-body-lg:     1rem;     /* 16px — Neulis Sans */
+  --text-body:        0.875rem; /* 14px — Neulis Sans */
+  --text-label:       0.75rem;  /* 12px — Neulis Sans */
+
+  /* Line heights — 8px rhythm */
+  --leading-display-lg:  4rem;    /* 64px */
+  --leading-display:     3.5rem;  /* 56px */
+  --leading-headline-lg: 3rem;    /* 48px */
+  --leading-headline:    2.5rem;  /* 40px */
+  --leading-headline-sm: 2rem;    /* 32px */
+  --leading-title-lg:    1.75rem; /* 28px */
+  --leading-title:       1.5rem;  /* 24px */
+  --leading-body-lg:     1.5rem;  /* 24px */
+  --leading-body:        1.25rem; /* 20px */
+  --leading-label:       1rem;    /* 16px */
+
+body {
+  font-family: var(--font-body);
+}
+
+.headline, .display {
+  @apply font-headline font-bold uppercase
+}
+
+.text-jumbotron {
+  font-size: var(--text-jumbotron);
+}
+
+.small {
+  font-size: var(--text-sm);
+  @apply italic
+}
+
+.eyebrow {
+  @apply text-xs tracking-widest uppercase
+}
+
+.menu-link {
+  @apply uppercase tracking-widest text-xs
+}
+
+p a {
+  @apply underline underline-offset-2
+}
+
+a:hover {
+  @apply bg-brand text-white
+}
+
+header a {
+  text-decoration: none;
+}
+
+section {
+  @apply px-2 py-32;
+  @screen md {
+    @apply px-20 py-60;
+  }
+}
+
+ul, ol {
+  @apply ml-5;
+    margin: 0;
+  padding: 0;
+}
+
+/* Form elements  */
+
+input[type='text'], input[type='email'], select {
+  @apply px-4 py-2 border-2 rounded-full border-plum bg-white text-plum duration-250 ease-in-out
+}
+
+select{
+  @apply pr-16
+}
+
+textarea {
+  @apply px-4 py-2 border-2 border-plum rounded-2xl bg-white text-gray duration-250 ease-in-out
+}
+
+input::placeholder, textarea::placeholder {
+  @apply italic
+}
+
+input:hover, select:hover, textarea:hover {
+  opacity: 1;
+}
+
+footer input{
+  @apply border-plum
+}
+
+input:focus {
+  outline-color: var(--color-plum);
+  opacity: 1;
+}
+
+footer input:focus {
+  outline-color: var(--color-dusty);
+  opacity: 1;
+}
+
+.btn-primary {
+  @apply rounded-full w-full uppercase font-bold tracking-widest text-xs px-4 py-4 border border-2 duration-250 ease-in-out font-headline;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border-color: var(--btn-border);
+  box-shadow: 4px 4px 0px 0px var(--btn-border);
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-tertiary:hover, .shopify-payment-button__button:hover, a.media-container:hover  {
+  @apply translate-x-[4px] translate-y-[4px];
+  box-shadow: 0px 0px 0px 0px var(--btn-border);
+}
+
+.btn-secondary {
+  @apply rounded-full uppercase font-bold tracking-widest text-sm px-4 py-3 border border-2 duration-250 ease-in-out font-title;
+  background-color: var(--btn-bg);
+  color: var(--btn-border);
+  border-color: var(--btn-border);
+  box-shadow: 4px 4px 0px 0px var(--btn-border);
+}
+
+.btn-tertiary {
+  @apply rounded-full uppercase font-bold tracking-widest text-sm px-4 py-3 border border-2 duration-250 ease-in-out font-title;
+  background-color: transparent;
+  color: var(--btn-border);
+  border-color: var(--btn-border);
+  box-shadow: 4px 4px 0px 0px var(--btn-border);
+}
+
+.btn-ghost {
+  @apply underline decoration-wavy underline-offset-4 uppercase font-bold text-sm tracking-widest duration-250 ease-in-out
+}
+
+.btn-ghost:after {
+  display: inline-block;
+  content: "→";
+  color: var(--btn-border);
+  margin-left: 4px;
+}
+
+.btn-ghost:hover {
+  text-decoration-color: var(--btn-text);
+  color: var(--btn-text);
+}
+
+
+.bg-brand {
+  --btn-bg: var(--color-brand);
+  --btn-text: var(--color-white);
+  --btn-border: var(--color-plum);
+}
+
+.bg-plum {
+  --btn-bg: var(--color-plum);
+  --btn-text: var(--color-plum);
+  --btn-border: var(--color-dusty);
+}
+
+.bg-dusty {
+  --btn-bg: var(--color-dusty);
+  --btn-text: var(--color-dusty);
+  --btn-border: var(--color-plum);
+}
+
+.bg-white {
+  --btn-bg: var(--color-brand);
+  --btn-text: var(--color-plum);
+  --btn-border: var(--color-plum);
+}
+
+
+@layer components {
+  .bg-brand  { --scallop-color: var(--color-brand); }
+  .bg-muted  { --scallop-color: var(--color-muted); }
+  .bg-dusty  { --scallop-color: var(--color-dusty); }
+  .bg-gray { --scallop-color: var(--color-gray); }
+  .bg-plum { --scallop-color: var(--color-plum); }
+  .bg-white { --scallop-color: var(--color-white); }
+}
+
+header {
+  @apply duration-250 ease-in-out
+}
+
+header:hover {
+  @apply drop-shadow-md 
+}
+
+.media-container {
+  @apply bg-cover bg-center border border-2 border-plum rounded-3xl
+}
+
+a.media-container:hover {
+  @apply transition;
+}
+
+.shadow-theme {
+  border-color: var(--btn-border);
+  box-shadow: 4px 4px 0px 0px var(--btn-border);
+}
+
+.waves-divider {
+  display: block;
+  margin-bottom: -100px;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.waves-divider img {
+  width: 100%;
+  display: block;
+}
+
+.page.current {
+  @apply font-bold
+}
+
+.shopify-payment-button__button{
+  @apply rounded-full uppercase font-bold tracking-widest text-sm px-4 pt-3 pb-8 border border-2 duration-250 ease-in-out font-title;
+  background-color: var(--btn-bg);
+  color: var(--btn-border);
+  border-color: var(--btn-border);
+  box-shadow: 4px 4px 0px 0px var(--btn-border);
+}
+
+.shopify-payment-button__button:hover, .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  @apply rounded-full uppercase font-bold tracking-widest text-sm px-4 pt-3 pb-8 border border-2 duration-250 ease-in-out font-title;
+  background-color: var(--color-brand);
+}
+
+button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
+  transition: all 250ms ease-in-out;
+}

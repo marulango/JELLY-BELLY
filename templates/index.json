@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "hero",
+      "settings": {
+        "heading": "Welcome",
+        "subheading": "Your tagline here"
+      }
+    },
+    "description": {
+      "type": "description",
+      "settings": {
+        "product_1": "",
+        "product_2": "",
+        "product_3": ""
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_FeBJwk": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Yes, this is dog",
+            "author": "Meadow, possibly."
+          }
+        },
+        "testimonial_TNGNtU": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Why are you using your hands for something other than petting me??!!!",
+            "author": "Biscotti, the cat"
+          }
+        },
+        "testimonial_LxbjAL": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I hate that I don't get to sit on the new screen. It's mine.",
+            "author": "Git, the cat"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_FeBJwk",
+        "testimonial_TNGNtU",
+        "testimonial_LxbjAL"
+      ],
+      "settings": {}
+    },
+    "featured-item": {
+      "type": "featured-item",
+      "settings": {
+        "product": "",
+      }
+    },
+    "preorder": {
+      "type": "preorder",
+      "settings": {
+        "product": "",
+      }
+    },
+  },
+  "order": [
+    "main",
+    "description",
+    "testimonials",
+    "featured-item",
+    "preorder"
+  ]
+}

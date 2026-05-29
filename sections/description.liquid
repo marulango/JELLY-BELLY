@@ -1,0 +1,48 @@
+<section class="bg-dusty text-plum">
+  <div class="text-center max-full mx-auto md:max-w-7xl px-4 md:px-8 md:pt-8 md:pb-32">
+    <p class="mb-4 eyebrow">New Products</p>
+    <p class="mb-4 display text-2xl">Presently Devastating</p>
+    <div class="md:flex items-top my-16">
+    {% for product in collections['featured'].products %}
+      <div class="item md:mx-4 mb-16 md:mb-2">
+        {% if product.featured_image %}
+          {% render 'image',
+            class: 'aspect-square media-container shadow-theme mb-4',
+            image: product.featured_image,
+            url: product.url,
+            width: 400,
+            height: 400,
+            crop: 'center'
+          %}
+        {% endif %}
+        <div class="collection-product__content">
+          <p class="font-bold text-lg ">{{ product.title | escape | link_to: product.url }}</p>
+          <p>
+            {% if product.price_min < product.price_max %}
+              {{ product.price_min | money }} – {{ product.price_max | money }}
+            {% else %}
+              {{ product.price | money }}
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    <a href="/collections/all" class="btn-secondary">
+      Browse All Products
+    </a>
+  </div>
+</section>
+<div class="waves-divider">
+  {% render 'divider-dusty-plum.liquid' %}
+</div>
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    { "type": "product", "id": "product_1", "label": "Product 1" },
+    { "type": "product", "id": "product_2", "label": "Product 2" },
+    { "type": "product", "id": "product_3", "label": "Product 3" }
+  ]
+}
+{% endschema %}

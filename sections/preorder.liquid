@@ -1,0 +1,72 @@
+<section class="bg-white text-plum">
+  <div class="text-left max-full mx-auto md:max-w-7xl px-4 md:px-16">
+    <div class="grid grid-flow-row-dense grid-cols-1 gap-8 lg:grid-cols-12">
+      <div class="lg:col-start-6 lg:col-end-13">
+        
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1500
+            | image_tag:
+              loading: 'lazy',
+              class: 'your-image',
+              widths: '400, 800, 1200, 1500',
+              sizes: '100vw'
+          }}
+        {%- else -%}
+        <div class="w-full aspect-video media-container shadow-theme" style="background-image: url({{ 'placeholder-image.jpeg' | asset_url }})">
+        </div>
+        {%- endif -%}
+      </div>
+      <div class="flex items-center lg:col-span-4">
+        <div>
+          <p class="eyebrow">A JJK doujinshi</p>
+          <p class="inline-block font-headline text-xl md:text-3xl font-bold uppercase mt-2">Revolution in Rouge</p>
+          <p class="inline-block text-sm mt-4">Gojo satoru yearning. Slow burn. The spicy stuff. Everything you've read in fanfiction, but visual.</p>
+          <p class="inline-block text-sm mt-2">Early episodes release on Patreon. Physical release coming soon. We're getting there <span class="italic">together</span>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="waves-divider">
+  {% render 'divider-white-dusty.liquid' %}
+</div>
+<section class="bg-dusty text-plum mt-16">
+  <div class="width-full mx-auto text-center px-4 py-24 md:px-16">
+    <p class="font-bold uppercase md:text-3xl font-headline mb-4">{{ section.settings.title }}</p>
+    <p class="mb-8">{{ section.settings.subtitle }}</p>
+
+    <form id="newsletter-form" class="md:flex gap-2 justify-center">
+      <input
+        type="email"
+        id="newsletter-email"
+        placeholder="{{ section.settings.placeholder }}"
+        required
+        class="mt-4 w-full max-w-sm"
+      />
+      <button
+        type="submit"
+        class="mt-4 w-full md:max-w-fit btn-secondary" 
+      >
+        {{ section.settings.button_label }}
+      </button>
+    </form>
+
+    <p id="newsletter-message" class="mt-4 hidden"></p>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Don't miss a drop" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "First to know. First to get it." },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "your@email.com" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "You're in! Welcome to the chaos 🎉" },
+    { "type": "text", "id": "error_message", "label": "Error message", "default": "Something went wrong, please try again." }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

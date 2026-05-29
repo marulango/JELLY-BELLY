@@ -1,0 +1,89 @@
+<section class="bg-white text-plum">
+  <div class="text-center max-full mx-auto md:max-w-7xl px-8 py-16 md:py-32">
+    
+ <div class="grid grid-cols-1  md:grid-cols-8  gap-8">
+   <div class="col-1 md:col-start-2 md:col-span-3">
+    {% for image in product.images %}
+      {% render 'image', class: 'aspect-square media-container shadow-theme', image: image %}
+    {% endfor %}
+  </div>
+  <div class="col-1 md:col-span-3 text-left">
+    <h4 class="mb-2 text-3xl md:text-4xl display">{{ product.title }}</h4>
+    <p class="font-bold mb-8">
+      {% if product.price_min < product.price_max %}
+        {{ product.price_min | money }} – {{ product.price_max | money }}
+      {% else %}
+        {{ product.price | money }}
+      {% endif %}
+    </p>
+    <div class="product-form"> 
+      {% form 'product', product %}
+        {% assign current_variant = product.selected_or_first_available_variant %}
+        <div class="flex flex-col md:flex-row md:items-center gap-4">
+          <div class="relative flex-1 min-w-0">
+            <select
+             name="id"
+             class="w-full appearance-none rounded-full border-2 border-plum bg-transparent pl-4 pr-8 py-3 text-plum cursor-pointer outline-none">
+              {% for variant in product.variants %}
+                <option
+                  value="{{ variant.id }}"
+                  {% if variant == current_variant %}
+                    selected="selected"
+                  {% endif %}
+                >
+                  {{ variant.title }} - {{ variant.price | money }}
+                </option>
+              {% endfor %}
+            </select>
+            <i class="ph-bold ph-caret-down absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-dusty"></i>
+          </div>
+          <div class="flex items-center rounded-full border-2 border-plum w-fit flex-shrink-0 mb-8 md:mb-0">
+            <button
+              type="button"
+              class="quantity-btn w-9 h-9 flex items-center justify-center rounded-full text-plum hover:bg-plum hover:text-white transition-colors"
+              onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.dispatchEvent(new Event('change'))"
+              aria-label="Decrease quantity"
+            >
+              <i class="ph-bold ph-minus"></i>
+            </button>
+            <input
+              type="number"
+              name="quantity"
+              min="1"
+              value="1"
+              class="w-10 text-center bg-transparent py-1 text-plum outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+              onchange="if(this.value < 1) this.value = 1"
+            >
+            <button
+              type="button"
+              class="quantity-btn w-9 h-9 flex items-center justify-center rounded-full text-plum hover:bg-plum hover:text-white transition-colors"
+              onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.dispatchEvent(new Event('change'))"
+              aria-label="Increase quantity"
+            >
+              <i class="ph-bold ph-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2">
+          <div class="mt-4 mb-4">
+            <input type="submit" class="btn-tertiary w-full" value="Add to cart">
+          </div>
+          <div class="md:mt-4 mb-4 md:ml-4 w-full duration-250 ease-in-out">{{ form | payment_button }}</div>
+        </div>
+      {% endform %}
+    </div>
+    <p class="my-8">{{ product.description }}</p>
+  </div>
+ </div>
+
+</div>
+</section>
+{% schema %}
+{
+  "name": "t:general.product",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

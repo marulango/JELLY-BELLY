@@ -1,0 +1,57 @@
+<section class="bg-plum text-dusty">
+  <div class="text-center max-full mx-auto md:max-w-7xl px-0 md:px-20 md:py-32">
+    <p class="font-5xl tracking-wide mb-4">★★★★★</p>
+    <p class="mb-4 eyebrow">Emotional Receipts</p>
+  <div class="swiper testimonials-swiper">
+    <div class="swiper-wrapper text-white">
+      {% for block in section.blocks %}
+        <div class="swiper-slide flex flex-col justify-center items-center min-h-[300px] relative pb-12 px-2">
+          <blockquote class="text-xl md:text-4xl font-headline font-bold uppercase text-center">
+            <p>{{ block.settings.quote }}</p>
+          </blockquote>
+          <cite class="text-xs md:text-lg absolute bottom-4 left-0 right-0 text-center not-italic uppercase font-headline block px-2 md:px-8">
+            — {{ block.settings.author }}
+          </cite>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-controls">
+      <div class="swiper-button-prev">
+        <i class="ph ph-caret-left"></i>
+      </div>
+      <div class="swiper-button-next">
+        <i class="ph ph-caret-right"></i>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<div class="waves-divider">
+  {% render 'divider-plum-dusty.liquid' %}
+</div>
+{% schema %}
+{
+  "name": "Testimonials",
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "author", "label": "Author" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}
