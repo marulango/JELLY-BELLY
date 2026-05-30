@@ -3,9 +3,38 @@
     
  <div class="grid grid-cols-1  md:grid-cols-8  gap-8">
    <div class="col-1 md:col-start-2 md:col-span-3">
-    {% for image in product.images %}
-      {% render 'image', class: 'aspect-square media-container shadow-theme', image: image %}
-    {% endfor %}
+    {% if product.images.size > 0 %}
+      <div class="product-gallery-wrapper">
+        <div class="swiper product-gallery-swiper media-container shadow-theme">
+          <div class="swiper-wrapper">
+            {% for image in product.images %}
+              <div class="swiper-slide">
+                {% render 'image', class: 'aspect-square', image: image %}
+              </div>
+            {% endfor %}
+          </div>
+          {% if product.images.size > 1 %}
+            <div class="swiper-button-prev product-gallery-prev">
+              <i class="ph ph-caret-left"></i>
+            </div>
+            <div class="swiper-button-next product-gallery-next">
+              <i class="ph ph-caret-right"></i>
+            </div>
+          {% endif %}
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="swiper product-thumbs-swiper">
+            <div class="swiper-wrapper">
+              {% for image in product.images %}
+                <div class="swiper-slide">
+                  {% render 'image', class: 'aspect-square', image: image %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
   </div>
   <div class="col-1 md:col-span-3 text-left">
     <h4 class="mb-2 text-3xl md:text-4xl display">{{ product.title }}</h4>
@@ -78,6 +107,62 @@
 
 </div>
 </section>
+{% stylesheet %}
+  .product-gallery-wrapper {
+    position: relative;
+  }
+
+  .product-gallery-swiper {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .product-thumbs-swiper {
+    margin-top: 0.75rem;
+  }
+
+  .product-thumbs-swiper .swiper-slide {
+    cursor: pointer;
+    opacity: 0.5;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: opacity 0.2s ease;
+  }
+
+  .product-thumbs-swiper .swiper-slide-thumb-active {
+    opacity: 1;
+    outline: 2px solid #FF52AF;
+    outline-offset: 2px;
+  }
+
+{% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper === 'undefined') return;
+
+    var thumbsEl = document.querySelector('.product-thumbs-swiper');
+    var thumbsSwiper = thumbsEl
+      ? new Swiper('.product-thumbs-swiper', {
+          slidesPerView: 4,
+          spaceBetween: 8,
+          freeMode: true,
+          watchSlidesProgress: true,
+        })
+      : null;
+
+    new Swiper('.product-gallery-swiper', {
+      slidesPerView: 1,
+      loop: !!thumbsEl,
+      navigation: {
+        nextEl: '.product-gallery-next',
+        prevEl: '.product-gallery-prev',
+      },
+      thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : {},
+    });
+  });
+{% endjavascript %}
+
 {% schema %}
 {
   "name": "t:general.product",
