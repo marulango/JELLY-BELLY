@@ -76,8 +76,14 @@
     
     <div class="col-1 md:col-span-3">
       <p class="eyebrow mb-2">{{ section.settings.title }}</p>
-      <form class="flex flex-col gap-2 w-full">
+      <form
+        id="newsletter-form"
+        class="flex flex-col gap-2 w-full"
+        data-success="{{ section.settings.success_message }}"
+        data-error="{{ section.settings.error_message }}"
+      >
         <input
+          id="newsletter-email"
           type="email"
           placeholder="{{ section.settings.placeholder }}"
           required

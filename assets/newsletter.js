@@ -1,5 +1,8 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('newsletter-form');
+  if (!form) return;
 
-  document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const email = document.getElementById('newsletter-email').value;
@@ -16,15 +19,24 @@
           data: {
             type: 'subscription',
             attributes: {
-              list_id: 'YfyxHi',
-              email: email
+              profile: {
+                data: {
+                  type: 'profile',
+                  attributes: { email: email }
+                }
+              }
+            },
+            relationships: {
+              list: {
+                data: { type: 'list', id: 'YfyxHi' }
+              }
             }
           }
         })
       });
 
       if (response.ok) {
-        message.textContent = '{{ section.settings.success_message }}';
+        message.textContent = form.dataset.success;
         message.classList.remove('hidden', 'text-red-400');
         message.classList.add('text-brand');
         document.getElementById('newsletter-email').value = '';
@@ -32,8 +44,9 @@
         throw new Error();
       }
     } catch {
-      message.textContent = '{{ section.settings.error_message }}';
+      message.textContent = form.dataset.error;
       message.classList.remove('hidden', 'text-brand');
       message.classList.add('text-red-400');
     }
   });
+});
