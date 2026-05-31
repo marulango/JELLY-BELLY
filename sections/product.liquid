@@ -107,35 +107,6 @@
 
 </div>
 </section>
-{% stylesheet %}
-  .product-gallery-wrapper {
-    position: relative;
-  }
-
-  .product-gallery-swiper {
-    border-radius: 1rem;
-    overflow: hidden;
-  }
-
-  .product-thumbs-swiper {
-    margin-top: 0.75rem;
-  }
-
-  .product-thumbs-swiper .swiper-slide {
-    cursor: pointer;
-    opacity: 0.5;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    transition: opacity 0.2s ease;
-  }
-
-  .product-thumbs-swiper .swiper-slide-thumb-active {
-    opacity: 1;
-    outline: 2px solid #FF52AF;
-    outline-offset: 2px;
-  }
-
-{% endstylesheet %}
 
 {% javascript %}
   document.addEventListener('DOMContentLoaded', function () {

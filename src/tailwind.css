@@ -273,3 +273,8 @@ a.media-container:hover {
 button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
   transition: all 250ms ease-in-out;
 }
+
+a#more-payment-options-link.shopify-payment-button__more-options {
+  font-size: .8rem;
+  font-style: italic;
+}
