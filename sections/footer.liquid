@@ -75,35 +75,14 @@
     </div>
     
     <div class="col-1 md:col-span-3">
-      <p class="eyebrow mb-2">{{ section.settings.title }}</p>
-      <form
-        id="newsletter-form"
-        class="flex flex-col gap-2 w-full"
-        data-success="{{ section.settings.success_message }}"
-        data-error="{{ section.settings.error_message }}"
-      >
-        <input
-          id="newsletter-email"
-          type="email"
-          placeholder="{{ section.settings.placeholder }}"
-          required
-          class="w-full mb-2 border-dusty text-base"
-        />
-        <button
-          type="submit"
-          class="btn-secondary w-full"
-        >
-          {{ section.settings.button_label }}
-        </button>
-      </form>
-      <p id="newsletter-message" class="mt-4 hidden"></p>
+      <p class="eyebrow mb-2">Don't miss a drop</p>
+      <div class="klaviyo-form-UkYtUp"></div>
     </div>
-  </div>
-  <div class="overflow-hidden">
-  <p class="leading-none whitespace-nowrap relative left-1/2 -translate-x-1/2 inline-block opacity-50">
-    <span class="font-headline text-jumbotron font-bold"> J311YB34NZ &copy; {{ 'now' | date: '%Y' }}</span>
-  </p>
-</div>
+    <div class="overflow-hidden">
+      <p class="leading-none whitespace-nowrap relative left-1/2 -translate-x-1/2 inline-block opacity-50">
+      <span class="font-headline text-jumbotron font-bold"> J311YB34NZ &copy; {{ 'now' | date: '%Y' }}</span>
+      </p>
+    </div>
 </footer>
 
 {% schema %}
@@ -121,12 +100,6 @@
       "label": "t:labels.show_payment_icons",
       "default": true
     },
-    { "type": "text", "id": "title", "label": "Title", "default": "Don't miss a drop" },
-    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "First to know. First to get it." },
-    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "your@email.com" },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" },
-    { "type": "text", "id": "success_message", "label": "Success message", "default": "You're in! Welcome to the chaos 🎉" },
-    { "type": "text", "id": "error_message", "label": "Error message", "default": "Something went wrong, please try again." }
   ],
   "presets": [{ "name": "Footer" }]
 }
