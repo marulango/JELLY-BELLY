@@ -40,15 +40,15 @@
       </div>
       <div class="">
         <p class="eyebrow mb-2 block">Your Store & Currency</p>
-        <div class="flex">
+        <div class="flex min-w-0 w-full">
         {% if localization.available_countries.size > 1 %}
-        <localization-form>
+        <localization-form class="w-full min-w-0">
           {% form 'localization' %}
-            <div class="relative">
-              <select 
-                name="country_code" 
+            <div class="relative w-full min-w-0">
+              <select
+                name="country_code"
                 onchange="this.form.submit()"
-                class="appearance-none rounded-full border-2 border-plum bg-transparent pl-4 pr-10 py-2 text-plum cursor-pointer outline-none"
+                class="w-full max-w-full appearance-none rounded-full border-2 border-plum bg-transparent pl-4 pr-10 py-2 text-plum cursor-pointer outline-none"
               >
                 {% for country in localization.available_countries %}
                   <option value="{{ country.iso_code }}"{% if country.iso_code == localization.country.iso_code %} selected{% endif %}>
@@ -76,7 +76,7 @@
     
     <div class="col-1 md:col-span-3">
       <p class="eyebrow mb-2">{{ section.settings.title }}</p>
-      <form class="gap-2 justify-left">
+      <form class="flex flex-col gap-2 w-full">
         <input
           type="email"
           placeholder="{{ section.settings.placeholder }}"
