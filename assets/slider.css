@@ -118,10 +118,10 @@
   height: 32px !important;
   margin-top: -16px;
   border-radius: 50%;
-  border: 2px solid var(--color-dusty);
-  color: var(--color-dusty);
+  border: 2px solid var(--color-plum);
+  color: var(--color-plum);
   background: var(--color-bg);
-  box-shadow: 2px 2px 0px 0px var(--color-dusty);
+  box-shadow: 2px 2px 0px 0px var(--color-plum);
   transition-duration: 250ms;
   transition-timing-function: var(--ease-in-out);
   z-index: 3;
@@ -130,7 +130,7 @@
 .product-gallery-prev:hover,
 .product-gallery-next:hover {
   translate: 4px 4px;
-  box-shadow: 0px 0px 0px 0px var(--color-dusty);
+  box-shadow: 0px 0px 0px 0px var(--color-plum);
 }
 
 .product-gallery-prev::after,
@@ -141,5 +141,32 @@
 .product-gallery-prev i,
 .product-gallery-next i {
   font-size: 1.25rem;
-  color: var(--color-dusty);
+  color: var(--color-plum);
 }
+
+  .product-gallery-wrapper {
+    position: relative;
+  }
+
+  .product-gallery-swiper {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .product-thumbs-swiper {
+    margin-top: 0.75rem;
+  }
+
+  .product-thumbs-swiper .swiper-slide {
+    cursor: pointer;
+    opacity: 0.5;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: opacity 0.2s ease;
+  }
+
+  .product-thumbs-swiper .swiper-slide-thumb-active {
+    opacity: 1;
+    outline: 2px solid #FF52AF;
+    outline-offset: 2px;
+  }
