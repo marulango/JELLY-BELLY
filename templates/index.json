@@ -44,8 +44,8 @@
         "testimonial_LxbjAL": {
           "type": "testimonial",
           "settings": {
-            "quote": "I hate that I don't get to sit on the new screen. It's mine.",
-            "author": "Git, the cat"
+            "quote": "\"...A tribute to foundational contemporary art and culture that is hard to miss. Full of both sexual and emotional climaxes..\"",
+            "author": "aithops"
           }
         }
       },
@@ -58,16 +58,12 @@
     },
     "featured-item": {
       "type": "featured-item",
-      "settings": {
-        "product": "",
-      }
+      "settings": {}
     },
     "preorder": {
       "type": "preorder",
-      "settings": {
-        "product": "",
-      }
-    },
+      "settings": {}
+    }
   },
   "order": [
     "main",
