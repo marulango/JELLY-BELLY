@@ -911,6 +911,11 @@
       display: none;
     }
   }
+  .md\:w-auto {
+    @media (width >= 48rem) {
+      width: auto;
+    }
+  }
   .md\:max-w-5xl {
     @media (width >= 48rem) {
       max-width: var(--container-5xl);
@@ -924,6 +929,11 @@
   .md\:max-w-fit {
     @media (width >= 48rem) {
       max-width: fit-content;
+    }
+  }
+  .md\:min-w-lg {
+    @media (width >= 48rem) {
+      min-width: var(--container-lg);
     }
   }
   .md\:grid-cols-4 {
