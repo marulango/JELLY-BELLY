@@ -27,32 +27,24 @@
     "testimonials": {
       "type": "testimonials",
       "blocks": {
-        "testimonial_FeBJwk": {
+        "testimonial_LxbjAL": {
           "type": "testimonial",
           "settings": {
-            "quote": "Yes, this is dog",
-            "author": "Meadow, possibly."
+            "quote": "\"...A tribute to foundational contemporary art and culture that is hard to miss. Full of both sexual and emotional climaxes...\"",
+            "author": "aithops"
           }
         },
         "testimonial_TNGNtU": {
           "type": "testimonial",
           "settings": {
             "quote": "Why are you using your hands for something other than petting me??!!!",
-            "author": "Biscotti, the cat"
-          }
-        },
-        "testimonial_LxbjAL": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "\"...A tribute to foundational contemporary art and culture that is hard to miss. Full of both sexual and emotional climaxes..\"",
-            "author": "aithops"
+            "author": "My cat, probably"
           }
         }
       },
       "block_order": [
-        "testimonial_FeBJwk",
-        "testimonial_TNGNtU",
-        "testimonial_LxbjAL"
+        "testimonial_LxbjAL",
+        "testimonial_TNGNtU"
       ],
       "settings": {}
     },
