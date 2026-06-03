@@ -1,9 +1,9 @@
-<section class="bg-dusty text-plum">
+<section class="bg-muted text-plum">
   <div class="text-center max-full mx-auto md:max-w-7xl px-4 md:px-8 md:pt-8 md:pb-32">
     <p class="mb-4 eyebrow">New Products</p>
     <p class="mb-4 display text-2xl">Presently Devastating</p>
     <div class="md:flex items-top my-16">
-    {% for product in collections['featured'].products %}
+    {% for product in collections['featured'].products limit:4 %}
       <div class="item md:mx-4 mb-16 md:mb-2">
         {% if product.featured_image %}
           {% render 'image',

@@ -69,10 +69,10 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 2px solid var(--color-dusty);
-  color: var(--color-dusty);
+  border: 2px solid var(--color-muted);
+  color: var(--color-muted);
   background: var(--color-bg);
-  box-shadow: 2px 2px 0px 0px var(--color-dusty);
+  box-shadow: 2px 2px 0px 0px var(--color-muted);
   --tw-duration: 250ms;
   transition-duration: 250ms;
   --tw-ease: var(--ease-in-out);
@@ -98,16 +98,16 @@
 .testimonials-swiper .swiper-button-prev i,
 .testimonials-swiper .swiper-button-next i {
   font-size: 1.25rem;
-  color: var(--color-dusty);
+  color: var(--color-muted);
 }
 
 .testimonials-swiper .swiper-pagination-bullet {
-  background: var(--color-white);
+  background: var(--color-dusty);
   opacity: 0.3;
 }
 
 .testimonials-swiper .swiper-pagination-bullet-active {
-  background: var(--color-brand);
+  background: var(--color-muted);
   opacity: 1;
 }
 

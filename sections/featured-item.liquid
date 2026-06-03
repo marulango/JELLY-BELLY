@@ -3,7 +3,7 @@
     <p class="mb-4 eyebrow">Fan Merch & Clothing</p>
     <p class="mb-4 display text-2xl">The Extended Universe</p>
     <div class="md:flex items-top my-16">
-    {% for product in collections['J311YB34NZ'].products %}
+    {% for product in collections['J311YB34NZ'].products limit:4 %}
       <div class="item md:mx-4 mb-16 md:mb-2">
         {% if product.featured_image %}
           {% render 'image',

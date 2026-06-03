@@ -203,20 +203,16 @@ footer input:focus {
   --btn-border: var(--color-plum);
 }
 
+.bg-muted {
+  --btn-bg: var(--color-muted);
+  --btn-text: var(--color-muted);
+  --btn-border: var(--color-plum);
+}
+
 .bg-white {
   --btn-bg: var(--color-brand);
   --btn-text: var(--color-plum);
   --btn-border: var(--color-plum);
-}
-
-
-@layer components {
-  .bg-brand  { --scallop-color: var(--color-brand); }
-  .bg-muted  { --scallop-color: var(--color-muted); }
-  .bg-dusty  { --scallop-color: var(--color-dusty); }
-  .bg-gray { --scallop-color: var(--color-gray); }
-  .bg-plum { --scallop-color: var(--color-plum); }
-  .bg-white { --scallop-color: var(--color-white); }
 }
 
 header {
